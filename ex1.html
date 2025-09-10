@@ -7,19 +7,20 @@
     
     <h2>Form Validation</h2>
     <!-- pass form name over to validating function -->
-    <form name="myform" action="ex1_version1.html" onsubmit="return validateForm('myform')" autocomplete="on" >
+   <form name="form" action="." onsubmit="validateForm()" autocomplete="on" >
             ID: <input type="text" name="id" ><br>
             Age: <input type="number" name="age" ><br>
             Email: <input type="text" name="email" ><br>
             Password: <input type="password" name="password" ><br>
             <input type="submit" value="Submit"><br>
-    </form>
+            <input type="reset" name="reset" value="Reset">
+        </form>
 
 
     <script>
-        function validateForm(formName) {
+        function validateForm() {
             // retrieve element using document.forms
-            let form = document.forms[formName];
+            let form = document.forms["form"];
 
             let id = form["id"].value;
             let age = form["age"].value;
