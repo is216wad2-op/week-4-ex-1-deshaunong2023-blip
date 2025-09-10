@@ -17,7 +17,7 @@ test_cases = [
 ]
 
 # Replace with path or URL to the solution file
-url = "ex1.html"
+url = "./ex1.html"
 
 options = Options()
 options.add_argument('--headless')
