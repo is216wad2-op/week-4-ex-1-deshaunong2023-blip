@@ -1,4 +1,3 @@
-<!-- Week 5 Ex 1 Solution version 1 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,49 +6,53 @@
     
     <h2>Form Validation</h2>
     <!-- pass form name over to validating function -->
-   <form name="form" action="." onsubmit="validateForm('form')" autocomplete="on" >
+    <form name="form" action="." onsubmit="return validateForm('form')" autocomplete="on">
             ID: <input type="text" name="id" ><br>
             Age: <input type="number" name="age" ><br>
             Email: <input type="text" name="email" ><br>
             Password: <input type="password" name="password" ><br>
             <input type="submit" value="Submit"><br>
             <input type="reset" name="reset" value="Reset">
-        </form>
-
+    </form>
 
     <script>
-        function validateForm(form) {
+        function validateForm(formName) {
             // retrieve element using document.forms
-            let form = document.forms[form];
+            let form = document.forms[formName];
 
             let id = form["id"].value;
-            let age = form["age"].value;
+            let age = Number(form["age"].value);  // Convert to number
             let email = form["email"].value;
             let pwd = form["password"].value;
            
             let msg = "";
 
+            // Check ID length
             if (id.length > 10) {
                 msg += "ID must not contain more than 10 characters\n";
             }
 
+            // Check age range
             if (age < 10 || age > 40) {
                 msg += "Age must be between 10 and 40\n";
             }
 
-            if (!email.includes("@") ) {
+            // Check if email contains '@'
+            if (!email.includes("@")) {
                 msg += "Email must contain '@'\n";
             }
 
+            // Check if password is empty
             if (pwd == "") {
                 msg += "Password must not be empty\n";
             }
 
+            // If there is any validation error, show alert and prevent form submission
             if (msg != "") {
                 alert(msg);
-                return false;
+                return false; // Prevent form submission
             } else {
-                return true;
+                return true; // Allow form submission if all validations pass
             }
         }
     </script>
